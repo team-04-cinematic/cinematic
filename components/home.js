@@ -1,6 +1,7 @@
 import { CONTAINER } from '../utils/constants.js';
 import renderMovies from './movies.js';
 
+
 const renderHome = (movies) => {
   renderFilter(movies);
   renderMovies(movies);
