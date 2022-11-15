@@ -64,13 +64,15 @@ const renderMovies = (movies) => {
       </p>
       <p class="movie-rating text-sm pb-4">
         Average vote: ${movie.vote_average}
-      </p>
+      </p> 
       <p class="description hidden absolute bottom-0 p-4 text-sm tracking-wide
           text-center bg-neutral-200 dark:bg-neutral-700 animate-fade-in-down">
         ${movie.overview}
       </p>
       `;
     movieContainer.addEventListener('click', () => {
+      const filterBy = document.querySelector('.filterBy');
+      filterBy.remove();
       movieDetails(movie);
     });
 
