@@ -1,11 +1,17 @@
 import { CONTAINER, BACKDROP_BASE_URL } from '../utils/constants.js';
 import constructUrl from '../utils/urls.js';
+import renderMovie from './single-movie.js';
 
 const fetchMoviesParticipated = async (actorId) => {
   const url = constructUrl(`person/${actorId}/movie_credits`);
   const res = await fetch(url);
   const data = await res.json();
   return data.cast;
+};
+const fetchMovie = async (movieId) => {
+  const url = constructUrl(`movie/${movieId}`);
+  const res = await fetch(url);
+  return res.json();
 };
 
 const renderActor = async (actor) => {
@@ -43,11 +49,11 @@ const renderActor = async (actor) => {
         ` : ''}
         <p id="actor-biography" class="text-base">
           <b>biography: </b> ${actor.biography.length > 500
-    ? `${actor.biography.slice(0, 500)} ...
+      ? `${actor.biography.slice(0, 500)} ...
         <a class='text-blue-700' href=#>READ MORE</a>
       `
-    : actor.biography
-}
+      : actor.biography
+    }
         </p>
 
         <!-- participated in Movies -->
@@ -77,6 +83,14 @@ const renderActor = async (actor) => {
         </div>
     </div>
 </div> <!-- End of container -->`;
+
+  movies.slice(0, 6).forEach(async (movieParticipated) => {
+    const movieContainer = document.querySelector(`[data-id="${movieParticipated.id}"]`);
+    const movie = await fetchMovie(movieParticipated.id);
+    movieContainer.addEventListener('click', async () => {
+      renderMovie(movie);
+    });
+  });
 };
 
 export default renderActor;
