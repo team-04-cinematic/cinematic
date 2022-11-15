@@ -49,11 +49,11 @@ const renderActor = async (actor) => {
         ` : ''}
         <p id="actor-biography" class="text-base">
           <b>biography: </b> ${actor.biography.length > 500
-      ? `${actor.biography.slice(0, 500)} ...
+    ? `${actor.biography.slice(0, 500)} ...
         <a class='text-blue-700' href=#>READ MORE</a>
       `
-      : actor.biography
-    }
+    : actor.biography
+}
         </p>
 
         <!-- participated in Movies -->

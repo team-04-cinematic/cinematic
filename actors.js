@@ -19,11 +19,7 @@ const actorDetails = async (actor) => {
   renderActor(actorRes);
 };
 
-// Don't touch this function please
-const autorun = async () => {
-  const actors = await fetchActors();
-  renderActors(actors.results);
-};
+
 
 const renderActors = (actors) => {
   actors.map(async (actor) => {
@@ -62,6 +58,12 @@ const renderActors = (actors) => {
     });
     CONTAINER.appendChild(actorContainer);
   });
+};
+
+// Don't touch this function please
+const autorun = async () => {
+  const actors = await fetchActors();
+  renderActors(actors.results);
 };
 
 document.addEventListener('DOMContentLoaded', autorun);

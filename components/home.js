@@ -1,12 +1,6 @@
 import { CONTAINER } from '../utils/constants.js';
 import renderMovies from './movies.js';
 
-
-const renderHome = (movies) => {
-  renderFilter(movies);
-  renderMovies(movies);
-};
-
 const renderFilter = (movies) => {
   const navbar = document.querySelector('.filterBy');
   navbar.innerHTML = `
@@ -62,6 +56,11 @@ const renderFilter = (movies) => {
     CONTAINER.innerHTML = '';
     renderMovies(movies);
   });
+};
+
+const renderHome = (movies) => {
+  renderFilter(movies);
+  renderMovies(movies);
 };
 
 export default renderHome;
