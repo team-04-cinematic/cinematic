@@ -1,6 +1,6 @@
 import constructUrl from './utils/urls.js';
 import renderActor from './components/actor.js';
-import { CONTAINER, BACKDROP_BASE_URL } from '../utils/constants.js';
+import { CONTAINER, BACKDROP_BASE_URL } from './utils/constants.js';
 
 // This function is to fetch movies. You may need to add it or change some part in it in order
 // to apply some of the features.
@@ -24,7 +24,6 @@ const autorun = async () => {
   const actors = await fetchActors();
   renderActors(actors.results);
 };
-
 
 const renderActors = (actors) => {
   actors.map(async (actor) => {
@@ -57,7 +56,7 @@ const renderActors = (actors) => {
       <h3 class="movie-title my-2 text-lg font-bold">
         ${actor.name}
       </h3>
-      `;
+    `;
     actorContainer.addEventListener('click', () => {
       actorDetails(actor);
     });
