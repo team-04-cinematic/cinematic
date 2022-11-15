@@ -1,19 +1,10 @@
 import { CONTAINER } from '../utils/constants.js';
 import renderMovies from './movies.js';
-import constructUrl from '../utils/urls.js';
 
 
-// This function is to fetch movies. You may need to add it or change some part in it in order
-// to apply some of the features.
-const fetchMovies = async () => {
-  const url = constructUrl('movie/now_playing');
-  const res = await fetch(url);
-  return res.json();
-};
-const renderHome = async () => {
-  const movies = await fetchMovies();
-  renderFilter(movies.results);
-  renderMovies(movies.results);
+const renderHome = (movies) => {
+  renderFilter(movies);
+  renderMovies(movies);
 };
 
 const renderFilter = (movies) => {
