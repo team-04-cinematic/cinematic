@@ -1,5 +1,4 @@
 import constructUrl from './utils/urls.js';
-import renderMovies from './components/movies.js';
 import renderHome from './components/home.js';
 
 // This function is to fetch movies. You may need to add it or change some part in it in order
@@ -14,7 +13,6 @@ const fetchMovies = async () => {
 const autorun = async () => {
   const movies = await fetchMovies();
   renderHome(movies.results);
-  renderMovies(movies.results);
 };
 
 document.addEventListener('DOMContentLoaded', autorun);

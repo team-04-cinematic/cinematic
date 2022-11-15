@@ -1,11 +1,17 @@
 import { CONTAINER } from '../utils/constants.js';
 import renderMovies from './movies.js';
 
+
 const renderHome = (movies) => {
-  const navbar = document.querySelector('.navbar');
+  renderFilter(movies);
+  renderMovies(movies);
+};
+
+const renderFilter = (movies) => {
+  const navbar = document.querySelector('.filterBy');
   navbar.innerHTML = `
-<select id = "filter" >
-<option> Filter Movies By </option>
+<select id = "filter" class="rounded-md p-1 border  border-t-2 border-b-4 outline-slate-300" >
+<option> Sort Movies By </option>
 <option> popularity </option>
 <option> relase date </option>
 <option> top rated </option>
