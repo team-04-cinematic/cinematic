@@ -1,6 +1,6 @@
-.container{
-  padding-left: 40%;
-}
+/* .container {
+    padding-left: 40%;
+} */
 
 .search-bar{
   width: 100%;
@@ -41,9 +41,9 @@
   width: 100%;
 }
 
-.container {
+/*.container {
   padding-top: 20px;
-}
+}*/
 
 #actors {
   margin: 24px 16px 0 0;
@@ -64,7 +64,6 @@
 
 body {
   font-family: sans-serif;
-
 }
 
 .logo {
@@ -98,7 +97,6 @@ body {
   /* width: 120px; */
   padding: 10px 30px;
   /* text-align: center; */
-
   position: relative;
 }
 
@@ -106,7 +104,6 @@ body {
   font-size: 20px;
   color: var(--color-white);
   text-decoration: none;
-
   transition: all 0.3s;
 }
 
