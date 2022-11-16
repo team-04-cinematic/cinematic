@@ -4,21 +4,19 @@ import renderMovies from './movies.js';
 const renderFilter = (movies) => {
   const navbar = document.querySelector('.filterBy');
   navbar.innerHTML = `
-<select id = "filter" class="rounded-md p-1 border  border-t-2 border-b-4 outline-slate-300" >
-<option> Sort Movies By </option>
-<option> popularity </option>
-<option> relase date </option>
-<option> top rated </option>
-</select> `;
+    <select id="filter" class="rounded-md p-1 mb-4 outline-slate-300
+      dark:bg-neutral-700 dark:text-neutral-200">
+      <option> Sort Movies By </option>
+      <option> popularity </option>
+      <option> relase date </option>
+      <option> top rated </option>
+    </select>
+  `;
   const filter = document.getElementById('filter');
 
-  // when client clicked on select element
-  // if default value is changed
   filter.addEventListener('change', () => {
-    // if value switched by client
     switch (filter.value) {
       case 'popularity':
-        // do somthing with  , "add" value
         movies.sort((a, b) => {
           const keyA = a.popularity;
           const keyB = b.popularity;
@@ -27,7 +25,7 @@ const renderFilter = (movies) => {
           if (keyA < keyB) return 1;
           return 0;
         });
-        break; // then take break
+        break;
       case 'relase date':
         // do somthing with  , "remove" value
         movies.sort((a, b) => {
