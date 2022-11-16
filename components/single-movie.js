@@ -160,9 +160,9 @@ const renderMovie = async (movieId) => {
           <!-- Movie cast -->
 
           <h4 class="text-xl font-bold">Cast</h4>
-          <div class="flex flex-wrap gap-8 w-full justify-center">
+          <div class="flex flex-wrap gap-4 w-full justify-center">
             ${movieCredits.slice(0, 6).map((credit) => `
-              <div data-credit-id="${credit.id}" class="flex flex-col basis-32
+              <div data-credit-id="${credit.id}" class="flex flex-col basis-40
                 bg-neutral-200 cursor-pointer transition duration-500 rounded
                 ease-in-out transform overflow-hidden dark:bg-neutral-700
                 dark:hover:bg-neutral-600 hover:shadow-2xl hover:bg-neutral-300
