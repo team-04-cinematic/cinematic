@@ -81,7 +81,7 @@ const renderActor = async (actorId) => {
 
         </div>
 
-        <p id="actor-biography" class="text-base">
+        <p id="actor-biography" class="text-base leading-7">
           <b>Biography: </b> ${actor.biography}
         </p>
 
