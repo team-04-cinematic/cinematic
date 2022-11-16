@@ -11,6 +11,11 @@
         "sourceType": "module"
     },
     "rules": {
-        "import/extensions": ["warn", "ignorePackages"]
+        "import/extensions": ["warn", "ignorePackages"],
+        "import/no-cycle": [
+            "error", {
+                "maxDepth": "Infinity"
+            }
+        ]
     }
 }
