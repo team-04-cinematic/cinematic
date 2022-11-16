@@ -6,6 +6,13 @@ This project uses The Movie DB API: `https://api.themoviedb.org/3`. It is up to
 you to use your Google and Postman skills to explore the API and understand the
 data.
 
+# Build
+
+```bash
+npm install
+npm run watch
+```
+
 # Already built for you
 
 - A home page that shows popular movies
