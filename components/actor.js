@@ -24,7 +24,7 @@ const renderActor = async (actorId) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   CONTAINER.innerHTML = `
-    <div class="flex flex-col p-8 md:flex-row gap-4 sm:gap-2 justify-start
+    <div class="flex flex-col p-8 md:flex-row gap-8 justify-start
       items-center">
 
       <!-- Actor profile pic -->
@@ -32,38 +32,41 @@ const renderActor = async (actorId) => {
         <img id="profile_path" src=${BACKDROP_BASE_URL + actor.profile_path}
           class="w-full h-full object-contain md:object-cover rounded"
           alt="${actor.name} ">
+
+
       </div>
 
-      <h2 id="actor-name" class="text-2xl font-bold">
-        ${actor.name}
-      </h2>
+
 
       <!-- Actor details -->
-      <div class="flex flex-wrap gap-4 md:w-1/2 justify-center basis-2/3 items-center">
+      <div class="flex flex-wrap gap-4 md:gap-8 md:w-1/2 justify-center basis-2/3
+      items-center md:items-start">
 
+        <h2 id="actor-name" class="text-2xl font-bold">
+          ${actor.name}
+        </h2>
 
-        <!-- check if actor has a birthday -->
-        ${actor.birthday ? `
-          <p id="actor-birthday" class="text-base">
-            <b>Birthday: </b> ${actor.birthday}
-          </p>
-        ` : ''}
+        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+          <!-- check if actor has a birthday -->
+          ${actor.birthday ? `
+            <p id="actor-birthday" class="text-base">
+              <b>Birthday: </b> ${actor.birthday}
+            </p>
+          ` : ''}
 
-        <!-- check if actor has a place of birth -->
-        ${actor.place_of_birth ? `
-          <p id="actor-placeofbirth" class="text-base">
-            <b>Place of birth: </b> ${actor.place_of_birth}
-          </p>
-        ` : ''}
+          <!-- check if actor has a place of birth -->
+          ${actor.place_of_birth ? `
+            <p id="actor-placeofbirth" class="text-base">
+              <b>Place of birth: </b> ${actor.place_of_birth}
+            </p>
+          ` : ''}
 
-        <!-- check if actor has a biography -->
-        ${actor.biography ? `
-          <p id="movie-biography" class="text-base">
-            <b>Gender: </b>${actor.gender === 1 ? 'Female' : 'Male'}
-          </p>
-        ` : ''}
+          ${actor.gender ? `
+            <p id="actor-gender" class="text-base">
+              <b>Gender: </b>${actor.gender === 1 ? 'Female' : 'Male'}
+            </p>
+          ` : ''}
 
-        <!-- check if actor has a popularity -->
         ${actor.popularity ? `
           <p id="movie-popularity" class="text-base">
             <b>Popularity: </b>${actor.popularity}
@@ -71,30 +74,27 @@ const renderActor = async (actorId) => {
         ` : ''}
 
         ${actor.deathday ? `
-        <p id="movie-language" class="text-base">
-          <b>Death Day: </b>${actor.deathday}
-        </p>
-        ` : ''}
-      </div>
+          <p id="movie-language" class="text-base">
+            <b>Death Day: </b>${actor.deathday}
+          </p>
+          ` : ''}
 
-      <p id="actor-biography" class="text-base">
+        </div>
+
+        <p id="actor-biography" class="text-base">
           <b>Biography: </b> ${actor.biography}
-      </p>
+        </p>
 
-      <!-- participated in Movies -->
-
-      <!-- check if the actor participated in any movies -->
-
-      ${movies.length > 0 ? `
-        <h3 class="text-xl font-bold">Movies</h3>
-        <div id="participated-movies" class="flex flex-wrap w-full
-          justify-center gap-4">
-          ${renderMetaMovies(movies)}
-        </div> <!-- end of actor details -->
-      ` : `
-        <h3 class="text-xl font-bold">No movies participations</h3>
-      `}
-
+        ${movies.length > 0 ? `
+          <h3 class="text-xl font-bold">Movies</h3>
+          <div id="participated-movies" class="flex flex-wrap w-full
+            justify-center gap-4">
+            ${renderMetaMovies(movies)}
+          </div> <!-- end of actor details -->
+        ` : `
+          <h3 class="text-xl font-bold">No movies participations</h3>
+        `}
+      </div>
     </div> <!-- end of container -->
 `;
 
