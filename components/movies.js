@@ -123,7 +123,7 @@ const renderMovies = (movies) => {
         ${genreNames.join(', ')}
       </p>
 
-      <p class="bg-cyan-300 dark:bg-cyan-600 text-neutral-900 dark:text-neutral-200 movie-rating text-sm p-2 absolute top-32 right-4 rounded font-bold">
+      <p class="bg-blue-300 dark:bg-blue-600 text-neutral-900 dark:text-neutral-200 movie-rating text-sm p-2 absolute top-32 right-4 rounded font-bold">
         ${movie.vote_average.toFixed(1)}
       </p>
 
