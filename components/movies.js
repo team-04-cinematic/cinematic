@@ -14,8 +14,8 @@ const renderMovies = (movies) => {
   CONTAINER.innerHTML = '';
 
   CONTAINER.innerHTML = `
-    <div class="filterBy mx-auto">
-      <select id="filter" class="rounded-md p-1 mb-4 outline-slate-300
+    <div class="filterBy w-full text-right mr-4">
+      <select id="filter" class="rounded-md py-2 px-4 outline-slate-300
         dark:bg-neutral-700 dark:text-neutral-200">
         <option> Sort Movies By </option>
         <option> popularity </option>
