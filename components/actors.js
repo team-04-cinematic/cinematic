@@ -14,7 +14,7 @@ const renderActors = async () => {
 
   CONTAINER.innerHTML = '';
   const fetchedActors = await fetchActors();
-  actors = fetchedActors.results;
+  const actors = fetchedActors.results;
 
   let actorsContainer = document.querySelector('.actors-container')
 
