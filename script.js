@@ -3,6 +3,7 @@ import renderMovies from './components/movies.js';
 import renderMovie from './components/single-movie.js';
 import renderActors from './components/actors.js';
 import renderAbout from './components/about.js';
+import renderSearch from './components/search.js';
 
 // This function is to fetch movies. You may need to add it or change some part in it in order
 // to apply some of the features.
@@ -58,7 +59,6 @@ const autorun = async () => {
 
   const actorsMenuItem = document.getElementById('actors-page');
   actorsMenuItem.addEventListener('click', async (event) => {
-    console.log('actors page');
     renderActors();
   });
 
@@ -67,18 +67,16 @@ const autorun = async () => {
     renderAbout();
   });
 
-
-
-  const search = document.getElementById("search-navbar");
-  search.addEventListener(("keypress"), (event) => {
-    if (event.charCode === 13) { // key code of the keybord key
-      const result = movies.results.find(({ title }) => title.toUpperCase() === search.value.toUpperCase());
-      if (result != undefined) {
-        search.value = " "
-        renderMovie(result.id)
-      };
-    }
+  const search = document.querySelectorAll('#search-navbar');
+  search.forEach((item) => {
+    item.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        const query = event.target.value;
+        renderSearch(query);
+      }
+    });
   });
+
 };
 
 document.addEventListener('DOMContentLoaded', autorun);

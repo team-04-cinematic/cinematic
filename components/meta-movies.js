@@ -1,11 +1,11 @@
 import { BACKDROP_BASE_URL } from '../utils/constants.js';
 
-const renderMetaMovies = (movies) => `
+const renderMetaMovies = (movies, limit = 30) => `
     <div id="movies" class="flex flex-wrap w-full justify-center
         gap-4">
-        ${movies.slice(0, 6).map((movie) => `
+        ${movies.slice(0, limit).map((movie) => `
         <div data-id="${movie.id}" class="movie flex
-            flex-col basis-40 justify-center items-center rounded
+            flex-col basis-40 justify-start items-center rounded
             bg-neutral-200 cursor-pointer transition duration-500 ease-in-out
             transform overflow-hidden dark:bg-neutral-700
             dark:hover:bg-neutral-600 hover:shadow-2xl hover:bg-neutral-300

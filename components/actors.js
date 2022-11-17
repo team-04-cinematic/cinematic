@@ -13,10 +13,8 @@ const fetchActors = async () => {
 const renderActors = async () => {
 
   CONTAINER.innerHTML = '';
-
-  const actors = await fetchActors();
-
-  console.log(actors.results);
+  const fetchedActors = await fetchActors();
+  actors = fetchedActors.results;
 
   let actorsContainer = document.querySelector('.actors-container')
 
@@ -38,8 +36,7 @@ const renderActors = async () => {
     'max-w-screen-lg'
   );
 
-  actors.results.map(async (actor) => {
-    console.log(actor)
+  actors.map(async (actor) => {
     const actorContainer = document.createElement('div');
     actorContainer.classList.add(
       'actor',

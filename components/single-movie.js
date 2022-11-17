@@ -123,7 +123,7 @@ const renderMovie = async (movieId) => {
         <!-- Related movies  -->
 
         <h3 class="text-2xl font-bold">Related Movies</h3>
-        ${renderMetaMovies(similarMovies)}
+        ${renderMetaMovies(similarMovies, 6)}
 
         <h3 class="text-2xl font-bold">Credits</h3>
         <div id="movie-credits" class="flex flex-col gap-8 w-full

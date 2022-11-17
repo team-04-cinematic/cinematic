@@ -85,7 +85,7 @@ const renderActor = async (actorId) => {
           <h3 class="text-xl font-bold">Movies</h3>
           <div id="participated-movies" class="flex flex-wrap w-full
             justify-center gap-4">
-            ${renderMetaMovies(movies)}
+            ${renderMetaMovies(movies, 6)}
           </div> <!-- end of actor details -->
         ` : `
           <h3 class="text-xl font-bold">No movies participations</h3>
