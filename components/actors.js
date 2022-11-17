@@ -10,16 +10,44 @@ const fetchActors = async () => {
   return res.json();
 };
 
-const renderActors = (actors) => {
-  actors.map(async (actor) => {
+const renderActors = async () => {
+
+  CONTAINER.innerHTML = '';
+
+  const actors = await fetchActors();
+
+  console.log(actors.results);
+
+  let actorsContainer = document.querySelector('.actors-container')
+
+  if (actorsContainer) {
+    actorsContainer.innerHTML = '';
+  } else {
+    actorsContainer = document.createElement('div');
+  }
+
+  actorsContainer.classList.add(
+    'movies-container',
+    'container',
+    'mx-auto',
+    'my-4',
+    'flex',
+    'flex-wrap',
+    'justify-center',
+    'gap-4',
+    'max-w-screen-lg'
+  );
+
+  actors.results.map(async (actor) => {
+    console.log(actor)
     const actorContainer = document.createElement('div');
     actorContainer.classList.add(
-      'actors',
+      'actor',
       'flex',
       'flex-col',
-      'justify-center',
+      'justify-start',
       'items-center',
-      'basis-40',
+      'basis-56',
       'rounded',
       'overflow-hidden',
       'bg-neutral-200',
@@ -47,14 +75,9 @@ const renderActors = (actors) => {
     actorContainer.addEventListener('click', () => {
       renderActor(actor.id);
     });
-    CONTAINER.appendChild(actorContainer);
+    actorsContainer.appendChild(actorContainer);
   });
+  CONTAINER.appendChild(actorsContainer);
 };
 
-// Don't touch this function please
-const autorun = async () => {
-  const actors = await fetchActors();
-  renderActors(actors.results);
-};
-
-document.addEventListener('DOMContentLoaded', autorun);
+export default renderActors;

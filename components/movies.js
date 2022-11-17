@@ -10,6 +10,77 @@ const fetchGenreName = async (genreId) => {
 };
 
 const renderMovies = (movies) => {
+
+  CONTAINER.innerHTML = '';
+
+  CONTAINER.innerHTML = `
+    <div class="filterBy mx-auto">
+      <select id="filter" class="rounded-md p-1 mb-4 outline-slate-300
+        dark:bg-neutral-700 dark:text-neutral-200">
+        <option> Sort Movies By </option>
+        <option> popularity </option>
+        <option> relase date </option>
+        <option> top rated </option>
+      </select>
+    </div>
+  `;
+
+  const filter = document.getElementById('filter');
+  filter.addEventListener('change', () => {
+    switch (filter.value) {
+      case 'popularity':
+        movies.sort((a, b) => {
+          const keyA = a.popularity;
+          const keyB = b.popularity;
+          if (keyA > keyB) return -1;
+          if (keyA < keyB) return 1;
+          return 0;
+        });
+        break;
+      case 'relase date':
+        movies.sort((a, b) => {
+          const keyA = new Date(a.release_date);
+          const keyB = new Date(b.release_date);
+          if (keyA > keyB) return -1;
+          if (keyA < keyB) return 1;
+          return 0;
+        });
+        break;
+      case 'top rated':
+        movies.sort((a, b) => {
+          const keyA = a.vote_average;
+          const keyB = b.vote_average;
+          if (keyA > keyB) return -1;
+          if (keyA < keyB) return 1;
+          return 0;
+        });
+        break; // then take break
+      default:
+        break;
+    }
+    renderMovies(movies);
+  });
+
+  let moviesContainer = document.querySelector('.movies-container')
+
+  if (moviesContainer) {
+    moviesContainer.innerHTML = '';
+  } else {
+    moviesContainer = document.createElement('div');
+  }
+
+  moviesContainer.classList.add(
+    'movies-container',
+    'container',
+    'mx-auto',
+    'my-4',
+    'flex',
+    'flex-wrap',
+    'justify-center',
+    'gap-4',
+    'max-w-screen-lg'
+  );
+
   movies.map(async (movie) => {
     const genreName = movie.genre_ids.map(
       async (genreId) => fetchGenreName(genreId),
@@ -21,10 +92,11 @@ const renderMovies = (movies) => {
       'movie',
       'flex',
       'flex-col',
-      'justify-center',
-      'items-center',
+      'justify-start',
+      'items-start',
       'max-w-xs',
       'rounded',
+      'relative',
       'overflow-hidden',
       'bg-neutral-200',
       'cursor-pointer',
@@ -43,16 +115,16 @@ const renderMovies = (movies) => {
       <img src="${BACKDROP_BASE_URL + movie.backdrop_path}"
         alt="${movie.title} poster" width="780" height="439">
 
-      <h3 class="movie-title my-2 text-lg font-bold">
+      <h3 class="movie-title my-2 p-4 py-2 text-lg font-bold">
         ${movie.title}
       </h3>
 
-      <p class="genre-names text-sm">
-        Genres: ${genreNames.join(', ')}
+      <p class="genre-names text-sm px-4 pb-4 text-gray-500 dark:text-gray-400 ">
+        ${genreNames.join(', ')}
       </p>
 
-      <p class="movie-rating text-sm pb-4">
-        Average vote: ${movie.vote_average}
+      <p class="bg-cyan-300 dark:bg-cyan-600 text-neutral-900 dark:text-neutral-200 movie-rating text-sm p-2 absolute top-32 right-4 rounded font-bold">
+        ${movie.vote_average.toFixed(1)}
       </p>
 
       <p class="description hidden absolute bottom-0 p-4 text-sm tracking-wide
@@ -61,8 +133,6 @@ const renderMovies = (movies) => {
       </p>
       `;
     movieContainer.addEventListener('click', () => {
-      const filterBy = document.querySelector('.filterBy');
-      filterBy.remove();
       renderMovie(movie.id);
     });
 
@@ -75,8 +145,8 @@ const renderMovies = (movies) => {
       const description = movieContainer.querySelector('.description');
       description.classList.add('hidden');
     });
-
-    CONTAINER.appendChild(movieContainer);
+    moviesContainer.appendChild(movieContainer);
+    CONTAINER.appendChild(moviesContainer);
   });
 };
 

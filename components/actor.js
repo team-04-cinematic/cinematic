@@ -32,11 +32,7 @@ const renderActor = async (actorId) => {
         <img id="profile_path" src=${BACKDROP_BASE_URL + actor.profile_path}
           class="w-full h-full object-contain md:object-cover rounded"
           alt="${actor.name} ">
-
-
       </div>
-
-
 
       <!-- Actor details -->
       <div class="flex flex-wrap gap-4 md:gap-8 md:w-1/2 justify-center basis-2/3

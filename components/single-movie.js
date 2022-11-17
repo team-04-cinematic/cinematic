@@ -62,7 +62,7 @@ const renderMovie = async (movieId) => {
 
   CONTAINER.innerHTML = `
     <div class="flex flex-col p-8 justify-center items-center rounded gap-8
-      min-h-screen overflow-hidden bg-neutral-100 md:flex-row
+      min-h-screen overflow-hidden bg-neutral-100 md:flex-row md:items-start
       dark:bg-neutral-700">
 
       <!-- Movie poster -->
