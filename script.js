@@ -69,16 +69,16 @@ const autorun = async () => {
 
 
 
-  // const search = document.getElementById("search");
-  // search.addEventListener(("keypress"), (event) => {
-  //   if (event.charCode === 13) { // key code of the keybord key
-  //     const result = movies.results.find(({ title }) => title.toUpperCase() === search.value.toUpperCase());
-  //     if (result != undefined) {
-  //       search.value = " "
-  //       renderMovie(result.id)
-  //     };
-  //   }
-  // });
+  const search = document.getElementById("search-navbar");
+  search.addEventListener(("keypress"), (event) => {
+    if (event.charCode === 13) { // key code of the keybord key
+      const result = movies.results.find(({ title }) => title.toUpperCase() === search.value.toUpperCase());
+      if (result != undefined) {
+        search.value = " "
+        renderMovie(result.id)
+      };
+    }
+  });
 };
 
 document.addEventListener('DOMContentLoaded', autorun);
