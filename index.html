@@ -69,7 +69,7 @@
               placeholder="Search...">
           </div>
           <ul
-            class="flex flex-col p-4 mt-4 border border-neutral-100 rounded-lg bg-neutral-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-neutral-800 md:dark:bg-neutral-900 dark:border-neutral-700">
+            class="flex flex-col p-4 mt-4 border border-neutral-100 rounded-lg bg-neutral-50 md:flex-row md:space-x-8 md:mt-0 md:font-medium md:border-0 md:bg-white dark:bg-neutral-800 md:dark:bg-neutral-900 dark:border-neutral-700">
             <li>
               <a href="#" id="movies-page"
                 class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-300"
@@ -93,23 +93,21 @@
   gap-4" id="app">
   </div>
 
-  <!-- footer -->
-
-  <div class="flex flex-col py-8 min-h-[50%] dark:bg-neutral-900 bg-neutral-200">
+  <footer class="flex flex-col py-8 min-h-[50%] dark:bg-neutral-900 bg-neutral-200">
     <h2 class="text-2xl py-4 font-bold text-center">Team</h2>
-    <ul class="flex flex-col team text-center gap-2">
-      <li class="text-sm">Sara Bakr</li>
-      <li class="text-sm">Ramyar Ali</li>
-      <li class="text-sm">Amal Salah</li>
-      <li class="text-sm">Aland Abdullah</li>
+    <ul class="flex flex-col team text-center gap-2 max-w-fit mx-auto">
+      <li class="text-sm"><a href="https://github.com/SaraBakr" target="_blank">Sara Bakr</a></li>
+      <li class="text-sm"><a href="https://github.com/ramagitup" target="_blank">Ramyar Ali</a></li>
+      <li class="text-sm"><a href="https://github.com/Amal95Salah" target="_blank">Amal Salah</a></li>
+      <li class="text-sm"><a href="https://github.com/alandio" target="_blank">Aland Abdullah</a></li>
     </ul>
-    <a href="https://github.com/team-04-movie-project/movies" class="flex gap-2 justify-center items-center py-8"
+    <a href="https://github.com/team-04-movie-project/movies" class="flex flex-wrap gap-2 py-8 max-w-fit mx-auto"
       target="_blank">
-      <img src="./images/github.svg" alt="github" class="w-6 h-6">
+      <img src="./images/github.svg" alt="github" class="w-5 h-5">
       GitHub
     </a>
-    <a href="#top" class="text-center text-sm py-4">Back to top</a>
-  </div>
+    <a href="#top" class="text-center text-sm py-4 max-w-fit mx-auto">Back to top</a>
+  </footer>
 
   <script type="module" type="text/javascript" src="script.js"></script>
 </body>

@@ -10,7 +10,7 @@ const profiles = [
   {
     name: 'Ramyar Ali',
     avatar: 'https://cdn.discordapp.com/avatars/1027021196040089692/1bd5be2d2273036e784ed0e1a1cbb983.webp?size=1024',
-    github: 'https://github.com//ramagitup',
+    github: 'https://github.com/ramagitup',
   },
 
   {

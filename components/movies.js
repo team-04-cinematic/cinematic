@@ -17,9 +17,9 @@ const renderMovies = (movies) => {
       <select id="filter" class="rounded-md py-2 px-4 outline-slate-300
         dark:bg-neutral-700 dark:text-neutral-200">
         <option> Sort Movies By </option>
-        <option> popularity </option>
-        <option> relase date </option>
-        <option> top rated </option>
+        <option> Popularity </option>
+        <option> Relase date </option>
+        <option> Top rated </option>
       </select>
     </div>
   `;
