@@ -1,8 +1,9 @@
 import { CONTAINER, BACKDROP_BASE_URL } from '../utils/constants.js';
 import constructUrl from '../utils/urls.js';
 import renderMetaMovies from './meta-movies.js';
+import renderMovie from './single-movie.js';
+import renderActor from './actor.js';
 
-// search
 const fetchSearch = async (searchTerm) => {
   const url = `${constructUrl('search/multi')}&query=${searchTerm}`;
   const res = await fetch(url);
@@ -63,11 +64,12 @@ const renderSearch = async (searchTerm) => {
           <div class="actors-container container mx-auto my-4 flex flex-wrap
             justify-center gap-4 max-w-screen-lg">
             ${actorResults.map((actor) => `
-              <div class="actor flex flex-col justify-start items-center
-                basis-52 rounded overflow-hidden bg-neutral-200 cursor-pointer
-                transition duration-500 ease-in-out transform
-                dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:shadow-2xl
-                hover:bg-neutral-400 hover:-translate-y-1 hover:scale-105">
+              <div data-id="${actor.id}" class="actor flex flex-col
+                justify-start items-center basis-52 rounded overflow-hidden
+                bg-neutral-200 cursor-pointer transform transition duration-500
+                ease-in-out dark:bg-neutral-700 dark:hover:bg-neutral-600
+                hover:shadow-2xl hover:bg-neutral-400 hover:-translate-y-1
+                hover:scale-105">
 
                 <img src="${actor.profile_path
     ? `${BACKDROP_BASE_URL}${actor.profile_path}`
@@ -88,6 +90,21 @@ const renderSearch = async (searchTerm) => {
   `;
 
   CONTAINER.appendChild(searchResults);
+
+  movieResults.forEach((movie) => {
+    console.log(movie);
+    const movieContainer = document.querySelector(`[data-id="${movie.id}"]`);
+    movieContainer.addEventListener('click', () => {
+      renderMovie(movie.id);
+    });
+  });
+
+  actorResults.forEach((actor) => {
+    const actorContainer = document.querySelector(`[data-id="${actor.id}"]`);
+    actorContainer.addEventListener('click', () => {
+      renderActor(actor.id);
+    });
+  });
 };
 
 export default renderSearch;
