@@ -43,7 +43,7 @@ const renderActors = async () => {
       'flex-col',
       'justify-start',
       'items-center',
-      'basis-56',
+      'basis-52',
       'rounded',
       'overflow-hidden',
       'bg-neutral-200',

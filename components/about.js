@@ -53,8 +53,13 @@ const renderAbout = () => {
   aboutContainer.innerHTML = `
     <div class="about">
       <h1 class="text-3xl font-bold text-center mb-8">About</h1>
-      <p class="text-center">This is a simple movie app built with vanilla JavaScript.</p>
-      <p class="text-center">It uses the <a href="https://developers.themoviedb.org/3/" target="_blank">The Movie Database API</a> to fetch movies and actors.</p>
+      <p class="text-center">
+        This is a simple movie app built with vanilla JavaScript.
+      </p>
+      <p class="text-center"
+        It uses the
+        <a href="https://developers.themoviedb.org/3/" target="_blank">The Movie Database API</a>
+        to fetch movies and actors.</p>
       <p class="text-center">It has the following features:</p>
 
       <ul class="list-disc list-inside mx-auto mt-8 max-w-fit">
@@ -71,7 +76,14 @@ const renderAbout = () => {
   `;
 
   const teamContainer = document.createElement('div');
-  teamContainer.classList.add('team-container', 'flex', 'flex-wrap', 'justify-center', 'gap-4', 'mt-8');
+  teamContainer.classList.add(
+    'team-container',
+    'flex',
+    'flex-wrap',
+    'justify-center',
+    'gap-4',
+    'mt-8',
+  );
 
   profiles.forEach((profile) => {
     const memberContainer = document.createElement('div');
@@ -79,7 +91,7 @@ const renderAbout = () => {
       'movie',
       'flex',
       'flex-col',
-      'basis-44',
+      'basis-52',
       'justify-center',
       'items-center',
       'max-w-xs',
@@ -100,7 +112,8 @@ const renderAbout = () => {
     );
 
     memberContainer.innerHTML = `
-    <img src = "${profile.avatar}" alt="${profile.name.split(' ')[0]}'s avatar" class="w-32 h-32 rounded-full object-cover object-center my-4" />
+    <img src = "${profile.avatar}" alt="${profile.name.split(' ')[0]}'s avatar"
+      class="w-32 h-32 rounded-full object-cover object-center my-4" />
     <h3 class="movie-title my-2 text-lg font-bold">
       ${profile.name}
     </h3>

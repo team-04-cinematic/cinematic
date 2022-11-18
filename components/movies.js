@@ -53,7 +53,7 @@ const renderMovies = (movies) => {
           if (keyA < keyB) return 1;
           return 0;
         });
-        break; // then take break
+        break;
       default:
         break;
     }
