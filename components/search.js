@@ -4,13 +4,12 @@ import renderMetaMovies from './meta-movies.js';
 
 // search
 const fetchSearch = async (searchTerm) => {
-  const url = `${constructUrl(`search/multi`)}&query=${searchTerm}`;
+  const url = `${constructUrl('search/multi')}&query=${searchTerm}`;
   const res = await fetch(url);
   return res.json();
-}
+};
 
 const renderSearch = async (searchTerm) => {
-
   CONTAINER.innerHTML = '';
 
   let resultsContainer = document.querySelector('.search-results');
@@ -22,11 +21,11 @@ const renderSearch = async (searchTerm) => {
   }
 
   const search = await fetchSearch(searchTerm);
-  const results = search.results;
+  const { results } = search;
   resultsContainer.innerHTML = '';
 
-  const movieResults = results.filter(result => result.media_type === 'movie');
-  const actorResults = results.filter(result => result.media_type === 'person');
+  const movieResults = results.filter((result) => result.media_type === 'movie');
+  const actorResults = results.filter((result) => result.media_type === 'person');
 
   const searchResults = document.createElement('div');
   searchResults.classList.add(
@@ -49,14 +48,14 @@ const renderSearch = async (searchTerm) => {
     <div class="flex flex-col gap-4 ">
       <div class="movie-results flex flex-col items-center md:items-start">
         <h3 class="text-2xl font-bold md:pl-8 mb-8">Movies</h3>
-        ${movieResults.length > 0 ? renderMetaMovies(movieResults) : `<p class="text-xl md:pl-8">No movies found</p>`}
+        ${movieResults.length > 0 ? renderMetaMovies(movieResults) : '<p class="text-xl md:pl-8">No movies found</p>'}
       </div>
       <div class="actor-results flex flex-col items-center md:items-start">
         <!-- TODO: refactor to use renderActors -->
         <h3 class="text-2xl font-bold pl-8 my-8">Actors</h3>
         ${actorResults.length > 0 ? `
           <div class="actors-container container mx-auto my-4 flex flex-wrap justify-center gap-4 max-w-screen-lg">
-            ${actorResults.map(actor => `
+            ${actorResults.map((actor) => `
               <div class="actor flex flex-col justify-start items-center basis-56 rounded overflow-hidden bg-neutral-200 cursor-pointer transition duration-500 ease-in-out transform dark:bg-neutral-700 dark:hover:bg-neutral-600 hover:shadow-2xl hover:bg-neutral-400 hover:-translate-y-1 hover:scale-105">
                 <img src="${actor.profile_path ? `${BACKDROP_BASE_URL}${actor.profile_path}` : 'https://via.placeholder.com/300x450'}" alt="${actor.name}" width="780" height="439" class="object-cover">
                 <h3 class="actor-name
@@ -72,6 +71,6 @@ const renderSearch = async (searchTerm) => {
   `;
 
   CONTAINER.appendChild(searchResults);
-}
+};
 
 export default renderSearch;

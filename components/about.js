@@ -4,7 +4,7 @@ const profiles = [
   {
     name: 'Amal Salah',
     avatar: 'https://cdn.discordapp.com/avatars/378975586040676363/450c7d0719c1f54622245657cfc78ca4.webp?size=1024',
-    github: 'https://github.com/Amal95Salah'
+    github: 'https://github.com/Amal95Salah',
   },
 
   {
@@ -22,7 +22,7 @@ const profiles = [
   {
     name: 'Aland Abdullah',
     avatar: 'https://cdn.discordapp.com/avatars/894698132066144287/ad89de8ec65267c98519459d24869fbc.webp?size=1024',
-    github: 'https://github.com/alandio'
+    github: 'https://github.com/alandio',
   },
 
 ];
@@ -30,7 +30,7 @@ const profiles = [
 const renderAbout = () => {
   CONTAINER.innerHTML = '';
 
-  let aboutContainer = document.querySelector('.about-container')
+  let aboutContainer = document.querySelector('.about-container');
 
   if (aboutContainer) {
     aboutContainer.innerHTML = '';
@@ -47,7 +47,7 @@ const renderAbout = () => {
     'flex-col',
     'justify-center',
     'gap-4',
-    'max-w-screen-lg'
+    'max-w-screen-lg',
   );
 
   aboutContainer.innerHTML = `
@@ -73,7 +73,7 @@ const renderAbout = () => {
   const teamContainer = document.createElement('div');
   teamContainer.classList.add('team-container', 'flex', 'flex-wrap', 'justify-center', 'gap-4', 'mt-8');
 
-  profiles.map((profile) => {
+  profiles.forEach((profile) => {
     const memberContainer = document.createElement('div');
     memberContainer.classList.add(
       'movie',
@@ -117,6 +117,6 @@ const renderAbout = () => {
   aboutContainer.appendChild(teamContainer);
 
   CONTAINER.appendChild(aboutContainer);
-  }
+};
 
-  export default renderAbout;
+export default renderAbout;

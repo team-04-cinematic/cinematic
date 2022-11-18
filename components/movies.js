@@ -10,7 +10,6 @@ const fetchGenreName = async (genreId) => {
 };
 
 const renderMovies = (movies) => {
-
   CONTAINER.innerHTML = '';
 
   CONTAINER.innerHTML = `
@@ -61,7 +60,7 @@ const renderMovies = (movies) => {
     renderMovies(movies);
   });
 
-  let moviesContainer = document.querySelector('.movies-container')
+  let moviesContainer = document.querySelector('.movies-container');
 
   if (moviesContainer) {
     moviesContainer.innerHTML = '';
@@ -78,7 +77,7 @@ const renderMovies = (movies) => {
     'flex-wrap',
     'justify-center',
     'gap-4',
-    'max-w-screen-lg'
+    'max-w-screen-lg',
   );
 
   movies.map(async (movie) => {

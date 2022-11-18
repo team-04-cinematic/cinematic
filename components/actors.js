@@ -11,12 +11,11 @@ const fetchActors = async () => {
 };
 
 const renderActors = async () => {
-
   CONTAINER.innerHTML = '';
   const fetchedActors = await fetchActors();
   const actors = fetchedActors.results;
 
-  let actorsContainer = document.querySelector('.actors-container')
+  let actorsContainer = document.querySelector('.actors-container');
 
   if (actorsContainer) {
     actorsContainer.innerHTML = '';
@@ -33,7 +32,7 @@ const renderActors = async () => {
     'flex-wrap',
     'justify-center',
     'gap-4',
-    'max-w-screen-lg'
+    'max-w-screen-lg',
   );
 
   actors.map(async (actor) => {
