@@ -49,7 +49,7 @@ const renderSearch = async (searchTerm) => {
       Search Results for "${searchTerm}"
     </h2>
 
-    <div class="flex flex-col gap-4 ">
+    <div class="flex flex-col gap-4 w-full">
 
       <div class="movie-results flex flex-col items-center md:items-start">
         <h3 class="text-2xl font-bold md:pl-8 mb-8">Movies</h3>

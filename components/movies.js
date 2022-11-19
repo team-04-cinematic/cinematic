@@ -2,63 +2,18 @@ import { CONTAINER, BACKDROP_BASE_URL } from '../utils/constants.js';
 import constructUrl from '../utils/urls.js';
 import renderMovie from './single-movie.js';
 
-const fetchGenreName = async (genreId) => {
+const fetchGenres = async () => {
   const url = constructUrl('genre/movie/list');
   const res = await fetch(url);
-  const data = await res.json();
-  return data.genres.find((genre) => genre.id === genreId).name;
+  return res.json();
 };
 
-const renderMovies = (movies) => {
-  CONTAINER.innerHTML = '';
+const fetchGenreName = async (genres, genreId) => genres.genres.find(
+  (genre) => genre.id === genreId,
+).name;
 
-  CONTAINER.innerHTML = `
-    <div class="filterBy w-full text-right mr-4">
-      <select id="filter" class="rounded-md py-2 px-4 outline-slate-300
-        dark:bg-neutral-700 dark:text-neutral-200">
-        <option> Sort Movies By </option>
-        <option> Popularity </option>
-        <option> Relase date </option>
-        <option> Top rated </option>
-      </select>
-    </div>
-  `;
-
-  const filter = document.getElementById('filter');
-  filter.addEventListener('change', () => {
-    switch (filter.value) {
-      case 'popularity':
-        movies.sort((a, b) => {
-          const keyA = a.popularity;
-          const keyB = b.popularity;
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
-          return 0;
-        });
-        break;
-      case 'relase date':
-        movies.sort((a, b) => {
-          const keyA = new Date(a.release_date);
-          const keyB = new Date(b.release_date);
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
-          return 0;
-        });
-        break;
-      case 'top rated':
-        movies.sort((a, b) => {
-          const keyA = a.vote_average;
-          const keyB = b.vote_average;
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
-          return 0;
-        });
-        break;
-      default:
-        break;
-    }
-    renderMovies(movies);
-  });
+const renderMovies = async (movies) => {
+  const genres = await fetchGenres();
 
   let moviesContainer = document.querySelector('.movies-container');
 
@@ -82,7 +37,7 @@ const renderMovies = (movies) => {
 
   movies.map(async (movie) => {
     const genreName = movie.genre_ids.map(
-      async (genreId) => fetchGenreName(genreId),
+      async (genreId) => fetchGenreName(genres, genreId),
     );
     const genreNames = await Promise.all(genreName);
 
@@ -145,8 +100,8 @@ const renderMovies = (movies) => {
       description.classList.add('hidden');
     });
     moviesContainer.appendChild(movieContainer);
-    CONTAINER.appendChild(moviesContainer);
   });
+  CONTAINER.appendChild(moviesContainer);
 };
 
 export default renderMovies;
