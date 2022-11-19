@@ -77,7 +77,7 @@ const renderSearch = async (searchTerm) => {
 
                 <img src="${actor.profile_path
     ? `${BACKDROP_BASE_URL}${actor.profile_path}`
-    : 'https://via.placeholder.com/300x450'}"
+    : 'https://via.placeholder.com/300x450?text=Image+not+found'}"
                 width="780" height="439" class="object-cover"
                 alt="${actor.name}">
 

@@ -24,22 +24,28 @@ const renderActor = async (actorId) => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   CONTAINER.innerHTML = `
-    <div class="flex flex-col gap-8 p-8 rounded min-h-screen items-center
+    <div class="flex flex-col gap-4 md:gap-8 p-4 rounded min-h-screen items-center
     bg-neutral-100 dark:bg-neutral-700 m-4 lg:m-0 lg:mb-4">
 
       <div class="flex flex-col p-8 md:flex-row gap-8 justify-start
         items-center">
 
         <!-- Actor profile pic -->
-        <div class="max-h-[65vh] md:w-1/2 md:min-h-full">
-          <img id="profile_path" src=${BACKDROP_BASE_URL + actor.profile_path}
+        <div class="max-h-[65vh] md:max-h-full md:w-1/2 md:min-h-full">
+          ${actor.profile_path ? `
+            <img id="profile_path" src=${BACKDROP_BASE_URL + actor.profile_path}
             class="w-full h-full object-contain md:object-cover rounded"
             alt="${actor.name} ">
+            ` : `
+            <img id="profile_path" src="https://via.placeholder.com/500x750?text=Image+not+found"
+            class="w-full h-full object-contain md:object-cover rounded"
+            alt="${actor.name} ">
+            `}
         </div>
 
         <!-- Actor details -->
-        <div class="flex flex-wrap gap-4 md:gap-8 md:w-1/2 justify-center
-        basis-2/3 items-center md:items-start">
+        <div class="flex flex-col gap-4 md:gap-8 md:w-1/2 justify-center
+          basis-2/3 items-center md:items-start">
 
           <h2 id="actor-name" class="text-2xl font-bold">
             ${actor.name}
@@ -81,7 +87,7 @@ const renderActor = async (actorId) => {
           </div>
 
           <p id="actor-biography" class="text-base leading-7">
-            <b>Biography: </b> ${actor.biography}
+            ${actor.biography ? `<b>Biography: </b>${actor.biography}` : 'No biography found'}
           </p>
 
         </div>

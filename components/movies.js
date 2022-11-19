@@ -66,8 +66,11 @@ const renderMovies = async (movies) => {
       'hover:scale-110',
     );
     movieContainer.innerHTML = `
+      ${movie.backdrop_path ? `
       <img src="${BACKDROP_BASE_URL + movie.backdrop_path}"
         alt="${movie.title} poster" width="780" height="439">
+        ` : `<img src="https://via.placeholder.com/780x439.png?text=Image+not+found"
+        alt="${movie.title} poster" width="780" height="439">`}
 
       <h3 class="movie-title my-2 p-4 py-2 text-lg font-bold">
         ${movie.title}

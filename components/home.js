@@ -31,47 +31,46 @@ const fetchMoviesByGenre = async (genreId) => {
   return data.results;
 };
 
-const renderHome = async (movies) => {
+const renderHome = async (passedMovies) => {
+  let movies = passedMovies || await fetchNowPlayingMovies();
   const genres = await fetchGenres();
 
   let filterContainer = document.querySelector('.filter-results');
 
-  if (filterContainer) {
-    filterContainer.innerHTML = '';
-  } else {
+  if (!filterContainer) {
     filterContainer = document.createElement('div');
     filterContainer.classList.add('filter-results', 'w-full');
+
+    filterContainer.innerHTML = `
+      <div class="filters flex flex-wrap w-full justify-center sm:justify-between
+        items-center gap-4">
+        <div class="filter-genre flex flex-wrap gap-4 items-center">
+          <label for="genre" class="text-sm font-medium">Genre</label>
+          <select name="genre" id="genre" class="rounded-md py-2 px-4
+            border-transparent border-r-[16px] outline-slate-300
+            dark:bg-neutral-700 dark:text-neutral-200 hover:cursor-pointer">
+            <option value="now_playing">Now Playing</option>
+            <option value="upcoming">Upcoming</option>
+            ${genres.genres.map((genre) => `
+              <option value="${genre.id}">${genre.name}</option>
+            `).join('')}
+          </select>
+        </div>
+        <div class="filter-sort flex flex-wrap gap-4 items-center">
+          <label for="sort" class="text-sm font-medium">Sort</label>
+          <select name="sort" id="sort" class="rounded-md py-2 px-4
+            border-transparent border-r-[16px] outline-slate-300
+            dark:bg-neutral-700 dark:text-neutral-200 hover:cursor-pointer">
+            <option value="popularity">Popularity</option>
+            <option value="release_date">Release Date</option>
+            <option value="vote_average">Rating</option>
+          </select>
+        </div>
+      </div>
+    `;
+
+    CONTAINER.appendChild(filterContainer);
   }
-
-  filterContainer.innerHTML = `
-  <div class="filters flex flex-wrap w-full justify-center sm:justify-between
-    items-center gap-4">
-    <div class="filter-genre flex flex-wrap gap-4 items-center">
-      <label for="genre" class="text-sm font-medium">Genre</label>
-      <select name="genre" id="genre" class="rounded-md py-2 px-4
-        border-transparent border-r-[16px] outline-slate-300
-        dark:bg-neutral-700 dark:text-neutral-200 hover:cursor-pointer">
-        <option value="now_playing">Now Playing</option>
-        <option value="upcoming">Upcoming</option>
-        ${genres.genres.map((genre) => `
-          <option value="${genre.id}">${genre.name}</option>
-        `).join('')}
-      </select>
-    </div>
-    <div class="filter-sort flex flex-wrap gap-4 items-center">
-      <label for="sort" class="text-sm font-medium">Sort</label>
-      <select name="sort" id="sort" class="rounded-md py-2 px-4
-        border-transparent border-r-[16px] outline-slate-300
-        dark:bg-neutral-700 dark:text-neutral-200 hover:cursor-pointer">
-        <option value="popularity">Popularity</option>
-        <option value="release_date">Release Date</option>
-        <option value="vote_average">Rating</option>
-      </select>
-    </div>
-  </div>
-  `;
-
-  CONTAINER.appendChild(filterContainer);
 
   const filter = document.getElementById('sort');
   filter.addEventListener('change', () => {
@@ -104,18 +103,20 @@ const renderHome = async (movies) => {
   });
 
   const genreFilter = document.getElementById('genre');
-  genreFilter.addEventListener('change', async (e) => {
-    const genre = e.target.value;
-    if (genre === 'now_playing') {
-      const nowPlayingMovies = await fetchNowPlayingMovies();
-      renderMovies(nowPlayingMovies);
-    } else if (genre === 'upcoming') {
-      const upcomingMovies = await fetchUpcomingMovies();
-      renderMovies(upcomingMovies);
-    } else {
-      const specificGenreMovies = await fetchMoviesByGenre(genre);
-      renderMovies(specificGenreMovies);
+  genreFilter.addEventListener('change', async () => {
+    filter.value = 'popularity';
+    switch (genreFilter.value) {
+      case 'now_playing':
+        movies = await fetchNowPlayingMovies();
+        break;
+      case 'upcoming':
+        movies = await fetchUpcomingMovies();
+        break;
+      default:
+        movies = await fetchMoviesByGenre(genreFilter.value);
+        break;
     }
+    renderMovies(movies);
   });
 
   renderMovies(movies);

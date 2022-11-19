@@ -144,7 +144,7 @@ const renderMovie = async (movieId) => {
                 alt="${credit.name} profile" width="185" height="276"
                 class="rounded object-cover w-full">
               ` : `
-              <img src="https://via.placeholder.com/185x276"
+              <img src="https://via.placeholder.com/185x276?text=Image+not+found"
                 alt="${credit.name} profile" width="185" height="276"
                 class="rounded object-cover w-full">
               `}
@@ -176,11 +176,13 @@ const renderMovie = async (movieId) => {
                 <!-- check if director has a profile picture -->
                 ${director.profile_path ? `
                   <img src="${PROFILE_BASE_URL + director.profile_path}"
-                    alt="${director.name} profile" width="185" height="276">
+                    alt="${director.name} profile" width="185" height="276"
+                    class="rounded object-cover w-full">
                   <p class="text-sm p-4">${director.name}</p>
                 ` : `
-                  <img src="https://via.placeholder.com/185x276"
-                    alt="${director.name} profile" width="185" height="276">
+                  <img src="https://via.placeholder.com/185x276?text=Image+not+found"
+                    alt="${director.name} profile" width="185" height="276"
+                    class="rounded object-cover w-full">
                   <p class="text-sm p-4">${director.name}</p>
                 `}
               </div>

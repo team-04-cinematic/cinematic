@@ -16,7 +16,7 @@ const renderMetaMovies = (movies, limit = 30) => `
             <img src="${BACKDROP_BASE_URL + movie.poster_path}"
                 alt="${movie.title} backdrop" width="780" height="1170">
             ` : `
-            <img src="https://via.placeholder.com/780x1170"
+            <img src="https://via.placeholder.com/780x1170?text=Image+not+found"
                 alt="${movie.title} backdrop" width="780" height="1170">
             `}
 
