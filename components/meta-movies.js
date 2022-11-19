@@ -25,7 +25,7 @@ const renderMetaMovies = (movies, limit = 30) => `
             </h3>
 
             <p class="movie-rating text-sm pb-4">
-            Average vote: ${movie.vote_average}
+            Average vote: ${movie.vote_average.toFixed(1)}
             </p>
 
         </div>

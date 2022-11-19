@@ -73,11 +73,13 @@ const renderMovies = async (movies) => {
         ${movie.title}
       </h3>
 
-      <p class="genre-names text-sm px-4 pb-4 text-gray-500 dark:text-gray-400 ">
+      <p class="text-sm px-4 pb-4 text-gray-500 dark:text-gray-400">
         ${genreNames.join(', ')}
       </p>
 
-      <p class="bg-blue-300 dark:bg-blue-600 text-neutral-900 dark:text-neutral-200 movie-rating text-sm p-2 absolute top-32 right-4 rounded font-bold">
+      <p class="movie-rating text-sm p-2 absolute top-32 right-4 rounded
+        font-bold bg-blue-300 dark:bg-blue-600 text-neutral-900
+        dark:text-neutral-200">
         ${movie.vote_average.toFixed(1)}
       </p>
 

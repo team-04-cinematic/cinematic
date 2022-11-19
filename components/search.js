@@ -25,8 +25,12 @@ const renderSearch = async (searchTerm) => {
   const { results } = search;
   resultsContainer.innerHTML = '';
 
-  const movieResults = results.filter((result) => result.media_type === 'movie');
-  const actorResults = results.filter((result) => result.media_type === 'person');
+  const movieResults = results.filter(
+    (result) => result.media_type === 'movie',
+  );
+  const actorResults = results.filter(
+    (result) => result.media_type === 'person',
+  );
 
   const searchResults = document.createElement('div');
   searchResults.classList.add(
@@ -92,7 +96,6 @@ const renderSearch = async (searchTerm) => {
   CONTAINER.appendChild(searchResults);
 
   movieResults.forEach((movie) => {
-    console.log(movie);
     const movieContainer = document.querySelector(`[data-id="${movie.id}"]`);
     movieContainer.addEventListener('click', () => {
       renderMovie(movie.id);

@@ -44,8 +44,8 @@ const renderHome = async (movies) => {
   }
 
   filterContainer.innerHTML = `
-  <div class="filters flex flex-wrap w-full justify-center sm:justify-between items-center
-    gap-4">
+  <div class="filters flex flex-wrap w-full justify-center sm:justify-between
+    items-center gap-4">
     <div class="filter-genre flex flex-wrap gap-4 items-center">
       <label for="genre" class="text-sm font-medium">Genre</label>
       <select name="genre" id="genre" class="rounded-md py-2 px-4
@@ -53,7 +53,9 @@ const renderHome = async (movies) => {
         dark:bg-neutral-700 dark:text-neutral-200 hover:cursor-pointer">
         <option value="now_playing">Now Playing</option>
         <option value="upcoming">Upcoming</option>
-        ${genres.genres.map((genre) => `<option value="${genre.id}">${genre.name}</option>`).join('')}
+        ${genres.genres.map((genre) => `
+          <option value="${genre.id}">${genre.name}</option>
+        `).join('')}
       </select>
     </div>
     <div class="filter-sort flex flex-wrap gap-4 items-center">
@@ -76,29 +78,22 @@ const renderHome = async (movies) => {
     switch (filter.value) {
       case 'popularity':
         movies.sort((a, b) => {
-          const keyA = a.popularity;
-          const keyB = b.popularity;
-          // Compare the 2 dates
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
+          if (a.popularity > b.popularity) return -1;
+          if (a.popularity < b.popularity) return 1;
           return 0;
         });
         break;
       case 'release_date':
         movies.sort((a, b) => {
-          const keyA = new Date(a.release_date);
-          const keyB = new Date(b.release_date);
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
+          if (a.release_date > b.release_date) return -1;
+          if (a.release_date < b.release_date) return 1;
           return 0;
         });
         break;
       case 'vote_average':
         movies.sort((a, b) => {
-          const keyA = a.vote_average;
-          const keyB = b.vote_average;
-          if (keyA > keyB) return -1;
-          if (keyA < keyB) return 1;
+          if (a.vote_average > b.vote_average) return -1;
+          if (a.vote_average < b.vote_average) return 1;
           return 0;
         });
         break;

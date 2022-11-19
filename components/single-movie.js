@@ -44,7 +44,8 @@ const fetchSimilarMovies = async (movieId) => {
   return data.results;
 };
 
-// You'll need to play with this function in order to add features and enhance the style.
+// You'll need to play with this function in order to add features and enhance
+// the style.
 const renderMovie = async (movieId) => {
   const movie = await fetchMovie(movieId);
   const videoTrailer = await fetchVideoTrailer(movieId);
@@ -94,7 +95,7 @@ const renderMovie = async (movieId) => {
             </p>
 
             <p id="movie-rating" class="text-sm">
-              <b>Rating:</b> ${movie.vote_average}
+              <b>Rating:</b> ${movie.vote_average.toFixed(1)}
             </p>
 
           </div>
