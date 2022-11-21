@@ -88,7 +88,7 @@ const autorun = async () => {
     renderAbout();
   });
 
-  const search = document.querySelectorAll('#search-navbar');
+  const search = document.querySelectorAll('.search-navbar');
   search.forEach((item) => {
     item.addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
