@@ -39,7 +39,7 @@ const renderHome = async (passedMovies) => {
 
   if (!filterContainer) {
     filterContainer = document.createElement('div');
-    filterContainer.classList.add('filter-results', 'w-full');
+    filterContainer.classList.add('filter-results', 'w-full', 'px-4');
 
     filterContainer.innerHTML = `
       <div class="filters flex flex-wrap w-full justify-center sm:justify-between
