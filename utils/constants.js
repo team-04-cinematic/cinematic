@@ -11,3 +11,5 @@ export {
   LOGO_BASE_URL,
   CONTAINER,
 };
+
+const test = "test"
